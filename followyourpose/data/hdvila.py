@@ -50,13 +50,12 @@ class HDVilaDataset(Dataset):
             pass
         print('dataset rank:', global_rank, ' / ',all_rank, ' ')
         
-        self.data_dir = 'Your dataset path'
+        self.data_dir = "/content/Data/Charades Video"
         if dataset_set=='train':
             self.text_name = 'caption_rm2048_train.csv'
         else:
             self.text_name = 'caption_2048_val_new.csv'
-        self.meta_path = os.path.join(self.data_dir, self.text_name)
-
+        self.meta_path = os.path.abspath(os.path.join(self.data_dir, self.text_name))
         
         spatial_transform = 'resize_center_crop'
         resolution=width
