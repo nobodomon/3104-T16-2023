@@ -197,15 +197,15 @@ class HDVilaDataset(Dataset):
             fps_clip = self.fps_max
         
         # caption index
-        middle_idx = (rand_idx + self.video_length /2 )*fs
-        big_cap_idx = (middle_idx // 64 +1) *64
-        small_cap_idx = (middle_idx // 64) *64
-        if big_cap_idx >= allf or ((big_cap_idx-middle_idx) >= (small_cap_idx-middle_idx)):
-            cap_idx = small_cap_idx
-        else:
-            cap_idx = big_cap_idx
+        # middle_idx = (rand_idx + self.video_length /2 )*fs
+        # big_cap_idx = (middle_idx // 64 +1) *64
+        # small_cap_idx = (middle_idx // 64) *64
+        # if big_cap_idx >= allf or ((big_cap_idx-middle_idx) >= (small_cap_idx-middle_idx)):
+        #     cap_idx = small_cap_idx
+        # else:
+        #     cap_idx = big_cap_idx
         # print(middle_idx, small_cap_idx, big_cap_idx,cap_idx)
-        caption = sample[1][int(cap_idx//64)]
+        caption = sample[1][0]
 
         frames = frames.permute(1,0,2,3)
         skeleton_final = torch.zeros_like(frames).byte()
