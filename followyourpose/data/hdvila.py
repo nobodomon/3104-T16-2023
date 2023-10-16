@@ -113,7 +113,7 @@ class HDVilaDataset(Dataset):
                         break
                     last_clip_id = row['clip_id']
                     if count % self.all_rank == self.global_rank:
-                        self.metadata.append([('%02d'%int(row['part_id']))+row['clip_id']]) 
+                        self.metadata.append([row['clip_id']]) 
                         self.metadata[-1].append([row['caption']])
                 else:
                     if count % self.all_rank == self.global_rank:
@@ -123,9 +123,8 @@ class HDVilaDataset(Dataset):
 
     
     def _get_video_path(self, sample):
-        part_id = int(sample[0][:2])
-        clip_id = sample[0][2:]
-        video_path = os.path.join(self.data_dir,'part_%d' % part_id, 'video_clips', clip_id)
+        clip_id = sample[0]
+        video_path = os.path.join(self.data_dir,'%s.mp4' % clip_id)
         return video_path
     
     def __getitem__(self, index):
