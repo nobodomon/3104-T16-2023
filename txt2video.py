@@ -161,6 +161,11 @@ def main(
         ddim_inv_latent = None
 
         from datetime import datetime
+
+        # Extract the base name of the skeleton_path
+        if skeleton_path is not None:
+          skeleton_name = os.path.basename(skeleton_path)
+          skeleton_name, _ = os.path.splitext(skeleton_name)
    
         now = str(datetime.now())
         # print(now)
@@ -168,16 +173,17 @@ def main(
             sample = validation_pipeline(prompt, generator=generator, latents=ddim_inv_latent,
                                         skeleton_path=skeleton_path,
                                         **validation_data).videos
-            save_videos_grid(sample, f"./data_folder/inference/sample-{global_step}-{str(seed)}-{now}/{prompt}.gif")
+            #save_videos_grid(sample, f"./data_folder/inference/sample-{global_step}-{str(seed)}-{now}/{prompt}.gif")
             samples.append(sample)
         samples = torch.concat(samples)
-        save_path = f"./data_folder/inference/sample-{global_step}-{str(seed)}-{now}/fyp.gif"
+        save_path = f"./data_folder/inference/{skeleton_name}.gif"
         save_videos_grid(samples, save_path)
         logger.info(f"Saved samples to {save_path}")
 
-        # save the save_paths to a file
-        with open(f"./data_folder/inference/sample-{global_step}-{str(seed)}-{now}/save_path.txt","w") as f:
+        # Save the 'save_path' to the file
+        with open(f"/content/3104-T16-2023/data_folder/inference_result/save_path.txt", "w") as f:
             f.write(save_path)
+
 
 
 if __name__ == "__main__":
