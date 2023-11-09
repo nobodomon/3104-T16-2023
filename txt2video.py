@@ -168,13 +168,16 @@ def main(
             sample = validation_pipeline(prompt, generator=generator, latents=ddim_inv_latent,
                                         skeleton_path=skeleton_path,
                                         **validation_data).videos
-            save_videos_grid(sample, f"{output_dir}/inference/sample-{global_step}-{str(seed)}-{now}/{prompt}.gif")
+            save_videos_grid(sample, f"./Data/inference/inference/sample-{global_step}-{str(seed)}-{now}/{prompt}.gif")
             samples.append(sample)
         samples = torch.concat(samples)
-        save_path = f"{output_dir}/inference/sample-{global_step}-{str(seed)}-{now}.gif"
+        save_path = f"./Data/inference/sample-{global_step}-{str(seed)}-{now}/fyp.gif"
         save_videos_grid(samples, save_path)
         logger.info(f"Saved samples to {save_path}")
 
+        # save the save_paths to a file
+        with open(f"./Data/inference/sample-{global_step}-{str(seed)}-{now}/save_path.txt","w") as f:
+            f.write(save_path)
 
 
 if __name__ == "__main__":
