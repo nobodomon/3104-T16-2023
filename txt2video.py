@@ -175,14 +175,14 @@ def main(
                                         **validation_data).videos
             #save_videos_grid(sample, f"./data_folder/inference/sample-{global_step}-{str(seed)}-{now}/{prompt}.gif")
             samples.append(sample)
-        samples = torch.concat(samples)
-        save_path = f"./data_folder/inference/{prompt}.gif"
-        save_videos_grid(samples, save_path)
-        logger.info(f"Saved samples to {save_path}")
+            samples = torch.concat(samples)
+            save_path = f"./data_folder/inference/{skeleton_name}/{prompt}.gif"
+            save_videos_grid(samples, save_path)
+            logger.info(f"Saved samples to {save_path}")
 
-        # Save the 'save_path' to the file
-        with open(f"/content/3104-T16-2023/data_folder/inference_result/save_path.txt", "w") as f:
-            f.write(save_path)
+            # Save the 'save_path' to the file
+            with open(f"/content/3104-T16-2023/data_folder/inference_result/save_path.txt", "w") as f:
+                f.write(save_path)
 
 
 
