@@ -170,14 +170,15 @@ def main(
         now = str(datetime.now())
         # print(now)
         for idx, prompt in enumerate(validation_data.prompts):
+            samples = []
             sample = validation_pipeline(prompt, generator=generator, latents=ddim_inv_latent,
                                         skeleton_path=skeleton_path,
                                         **validation_data).videos
             #save_videos_grid(sample, f"./data_folder/inference/sample-{global_step}-{str(seed)}-{now}/{prompt}.gif")
             samples.append(sample)
-            samples = torch.concat(samples)
+            samples_torch = torch.concat(samples)
             save_path = f"./data_folder/inference/{skeleton_name}/{prompt}.gif"
-            save_videos_grid(samples, save_path)
+            save_videos_grid(samples_torch, save_path)
             logger.info(f"Saved samples to {save_path}")
 
             # Save the 'save_path' to the file
