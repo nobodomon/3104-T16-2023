@@ -155,6 +155,7 @@ def main(
                 
     if accelerator.is_main_process:
         samples = []
+        save_paths = []
         generator = torch.Generator(device=accelerator.device)
         generator.manual_seed(seed)
 
@@ -178,13 +179,13 @@ def main(
             samples.append(sample)
             samples_torch = torch.concat(samples)
             save_path = f"./data_folder/inference/{skeleton_name}/{prompt}.gif"
+            save_paths.append(save_path)
             save_videos_grid(samples_torch, save_path)
             logger.info(f"Saved samples to {save_path}")
 
-            # Save the 'save_path' to the file
-            with open(f"/content/3104-T16-2023/data_folder/inference_result/save_path.txt", "w") as f:
-                f.write(save_path)
-
+        # Save the 'save_path' to the file
+        with open(f"/content/3104-T16-2023/data_folder/inference_result/save_path.txt", "w") as f:
+            f.writelines(save_paths)
 
 
 if __name__ == "__main__":
