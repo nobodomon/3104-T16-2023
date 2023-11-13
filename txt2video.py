@@ -50,7 +50,7 @@ def main(
     mixed_precision: Optional[str] = "fp16",
     enable_xformers_memory_efficient_attention: bool = True,
     seed: Optional[int] = None,
-    skeleton_type: str = None,
+    skeleton_type: Optional[str] = None,
     skeleton_path: Optional[str] = None,
 ):
     *_, config = inspect.getargvalues(inspect.currentframe())
@@ -157,6 +157,10 @@ def main(
     if accelerator.is_main_process:
         samples = []
         save_paths = []
+        
+        with open(f"/content/3104-T16-2023/data_folder/inference_result/{skeleton_type}/save_path.txt", "r") as f:
+          save_paths = [line.rstrip('\n') for line in f]
+
         generator = torch.Generator(device=accelerator.device)
         generator.manual_seed(seed)
 
@@ -180,12 +184,16 @@ def main(
             samples.append(sample)
             samples_torch = torch.concat(samples)
             save_path = f"./data_folder/inference/{skeleton_type}/{skeleton_name}/{prompt}.gif"
-            save_paths.append(save_path)
+            if save_paths.include(savepath):
+              
+            else:
+              save_paths.append(save_path)
+
             save_videos_grid(samples_torch, save_path)
             logger.info(f"Saved samples to {save_path}")
 
         # Save the 'save_path' to the file
-        with open(f"/content/3104-T16-2023/data_folder/inference_result/save_path.txt", "w") as f:
+        with open(f"/content/3104-T16-2023/data_folder/inference_result/{skeleton_type}/save_path.txt", "w") as f:
             f.writelines(save_paths)
 
 
@@ -195,4 +203,4 @@ if __name__ == "__main__":
     parser.add_argument("--skeleton_type", type=str)
     parser.add_argument("--skeleton_path", type=str)
     args = parser.parse_args()
-    main(**OmegaConf.load(args.config), skeleton_path = args.skeleton_path)
+    main(**OmegaConf.load(args.config), skeleton_path = args.skeleton_path, skeleton_type = args.skeleton_type)
