@@ -184,13 +184,7 @@ def main(
             samples.append(sample)
             samples_torch = torch.concat(samples)
             save_path = f"./data_folder/inference/{skeleton_type}/{skeleton_name}/{prompt}.gif"
-<<<<<<< HEAD
             if save_path not in save_paths:
-=======
-            if save_paths.include(savepath):
-              
-            else:
->>>>>>> c16adf94f51d71ad000bc5e07ff946eb30cf0a91
               save_paths.append(save_path)
 
             save_videos_grid(samples_torch, save_path)
