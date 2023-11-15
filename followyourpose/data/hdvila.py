@@ -51,7 +51,7 @@ class HDVilaDataset(Dataset):
             pass
         print('dataset rank:', global_rank, ' / ',all_rank, ' ')
         
-        self.data_dir = os.path.join("/content/Data/Charades Video", skeleton_type)
+        self.data_dir = os.path.join("/content/Data/stickman", skeleton_type)
         if dataset_set=='train':
             self.text_name = 'caption_rm2048_train.csv'
         else:
