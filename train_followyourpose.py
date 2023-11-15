@@ -67,6 +67,7 @@ def main(
     enable_xformers_memory_efficient_attention: bool = True,
     seed: Optional[int] = None,
     skeleton_path: Optional[str] = None,
+    skeleton_type: Optional[str] = None,
 ):
     *_, config = inspect.getargvalues(inspect.currentframe())
 
@@ -154,7 +155,7 @@ def main(
     )
 
     # Get the training dataset
-    train_dataset = HDVilaDataset(accelerator=accelerator, **train_data)
+    train_dataset = HDVilaDataset(accelerator=accelerator, skeleton_type=skeleton_type, **train_data)
 
 
     # DataLoaders creation:
@@ -364,6 +365,7 @@ def main(
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", type=str, default="./configs/pose_train.yaml")
+    parser.add_argument("--skeleton_type", type=str, default="CharadesVideo")
     args = parser.parse_args()
 
-    main(**OmegaConf.load(args.config))
+    main(**OmegaConf.load(args.config), skeleton_type=args.skeleton_type)

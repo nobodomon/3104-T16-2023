@@ -40,6 +40,7 @@ class HDVilaDataset(Dataset):
                 sample_frame_rate=2,
                 sample_start_idx=0,
                 accelerator=None,
+                skeleton_type=None,
                 ):        
         try:
             host_gpu_num = accelerator.num_processes
@@ -50,7 +51,7 @@ class HDVilaDataset(Dataset):
             pass
         print('dataset rank:', global_rank, ' / ',all_rank, ' ')
         
-        self.data_dir = "/content/Data/Charades Video"
+        self.data_dir = os.path.join("/content/Data/Charades Video", skeleton_type)
         if dataset_set=='train':
             self.text_name = 'caption_rm2048_train.csv'
         else:
