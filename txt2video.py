@@ -183,7 +183,8 @@ def main(
             #save_videos_grid(sample, f"./data_folder/inference/sample-{global_step}-{str(seed)}-{now}/{prompt}.gif")
             samples.append(sample)
             samples_torch = torch.concat(samples)
-            save_path = f"./data_folder/inference/{skeleton_type}/{skeleton_name}/{prompt}.gif"
+            stripped_prompt = prompt.replace(" ", "_")
+            save_path = f"./data_folder/inference/{skeleton_type}/{skeleton_name}/{stripped_prompt}.gif"
             if save_path not in save_paths:
               save_paths.append(save_path)
 
