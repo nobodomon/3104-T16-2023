@@ -1,1 +1,8 @@
-./data_folder/inference/Sims4ActionVideo/GS_S8D2_fC13/Ironman_taking_a_seat.gif./data_folder/inference/Sims4ActionVideo/GS_S8D2_fC13/Ironman_taking_a_seat.gif./data_folder/inference/Sims4ActionVideo/Ea_S8D1_fC3/Pikachu_on_the_ocean.gif./data_folder/inference/Sims4ActionVideo/GS_S8D2_fC13/Ironman_taking_a_seat.gif./data_folder/inference/Sims4ActionVideo/GS_S8D2_fC13/Ironman_taking_a_seat.gif./data_folder/inference/Sims4ActionVideo/Ea_S8D1_fC3/Pikachu_on_the_ocean.gif./data_folder/inference/Sims4ActionVideo/Ea_S8D1_fC3/Pikachu_on_the_ocean.gif./data_folder/inference/Sims4ActionVideo/Ea_S8D1_fC3/iron_man_in_a_school.gif
+./data_folder/inference/Sims4ActionVideo/GS_S8D2_fC13/Ironman_taking_a_seat.gif
+./data_folder/inference/Sims4ActionVideo/GS_S8D2_fC13/Ironman_taking_a_seat.gif
+./data_folder/inference/Sims4ActionVideo/Ea_S8D1_fC3/Pikachu_on_the_ocean.gif
+./data_folder/inference/Sims4ActionVideo/GS_S8D2_fC13/Ironman_taking_a_seat.gif
+./data_folder/inference/Sims4ActionVideo/GS_S8D2_fC13/Ironman_taking_a_seat.gif
+./data_folder/inference/Sims4ActionVideo/Ea_S8D1_fC3/Pikachu_on_the_ocean.gif
+./data_folder/inference/Sims4ActionVideo/Ea_S8D1_fC3/Pikachu_on_the_ocean.gif
+./data_folder/inference/Sims4ActionVideo/Ea_S8D1_fC3/iron_man_in_a_school.gif

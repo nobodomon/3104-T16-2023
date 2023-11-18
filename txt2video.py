@@ -193,7 +193,7 @@ def main(
 
         # Save the 'save_path' to the file
         with open(f"/content/3104-T16-2023/data_folder/inference_result/{skeleton_type}/save_path.txt", "a") as f:
-            f.writelines(save_paths)
+            f.writelines(save_paths + "\n")
 
 
 if __name__ == "__main__":
