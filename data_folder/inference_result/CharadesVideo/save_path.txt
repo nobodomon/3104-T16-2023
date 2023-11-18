@@ -1,1 +1,1 @@
-./data_folder/inference/CharadesVideo/LX54K/Pikachu on the ocean.gif
+./data_folder/inference/CharadesVideo/LX54K/Pikachu_on_the_ocean.gif
